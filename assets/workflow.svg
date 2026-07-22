@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090812"/>
+      <stop offset="100%" stop-color="#140f26"/>
+    </linearGradient>
+    <linearGradient id="stepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c77dff"/>
+      <stop offset="100%" stop-color="#8a2be2"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="450" rx="16" fill="url(#bg2)"/>
+
+  <text x="500" y="45" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="22" fill="#ffffff" text-anchor="middle">Notification Lifecycle & Progress Milestone Workflow</text>
+
+  <!-- Step 1: Start -->
+  <g transform="translate(70, 110)">
+    <rect width="200" height="240" rx="12" fill="#1b1430" stroke="#8a2be2" stroke-width="2"/>
+    <circle cx="100" cy="50" r="28" fill="url(#stepGrad)"/>
+    <text x="100" y="58" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="20" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="100" y="105" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="16" fill="#ffffff" text-anchor="middle">🚀 START</text>
+    <text x="100" y="135" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Initiates task &amp; scans</text>
+    <text x="100" y="155" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">calculates total size</text>
+    <rect x="20" y="180" width="160" height="35" rx="6" fill="#291e4a"/>
+    <text x="100" y="202" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#c77dff" text-anchor="middle">Sends "Backup Iniciado" Toast</text>
+  </g>
+
+  <!-- Arrow 1-2 -->
+  <path d="M280,230 L340,230" stroke="#c77dff" stroke-width="3"/>
+  <polygon points="340,225 350,230 340,235" fill="#c77dff"/>
+
+  <!-- Step 2: In-Progress (%) -->
+  <g transform="translate(350, 110)">
+    <rect width="300" height="240" rx="12" fill="#1b1430" stroke="#00f2fe" stroke-width="2"/>
+    <circle cx="150" cy="50" r="28" fill="#00c6ff"/>
+    <text x="150" y="58" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="20" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="150" y="105" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="16" fill="#ffffff" text-anchor="middle">📊 PROGRESS MILESTONES (%)</text>
+    <text x="150" y="135" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Tracks copied bytes in real-time</text>
+    <text x="150" y="155" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Triggers Toast every 10% step</text>
+    <!-- Mini progress preview -->
+    <rect x="30" y="175" width="240" height="45" rx="8" fill="#102542" stroke="#00c6ff" stroke-width="1"/>
+    <text x="40" y="195" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ffffff">📊 Progreso: 40% (800MB/2000MB)</text>
+    <rect x="40" y="205" width="220" height="6" rx="3" fill="#1c3a63"/>
+    <rect x="40" y="205" width="88" height="6" rx="3" fill="#00f2fe"/>
+  </g>
+
+  <!-- Arrow 2-3 -->
+  <path d="M660,230 L720,230" stroke="#00f2fe" stroke-width="3"/>
+  <polygon points="720,225 730,230 720,235" fill="#00f2fe"/>
+
+  <!-- Step 3: Complete -->
+  <g transform="translate(730, 110)">
+    <rect width="200" height="240" rx="12" fill="#1b1430" stroke="#00ff87" stroke-width="2"/>
+    <circle cx="100" cy="50" r="28" fill="#00ff87"/>
+    <text x="100" y="58" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="20" fill="#0c0a14" text-anchor="middle">3</text>
+    <text x="100" y="105" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="16" fill="#ffffff" text-anchor="middle">✅ COMPLETE</text>
+    <text x="100" y="135" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Reaches 100%</text>
+    <text x="100" y="155" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Logs summary statistics</text>
+    <rect x="20" y="180" width="160" height="35" rx="6" fill="#133827"/>
+    <text x="100" y="202" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#00ff87" text-anchor="middle">Sends "100% Finalizado" Toast</text>
+  </g>
+</svg>

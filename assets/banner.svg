@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0c1b"/>
+      <stop offset="50%" stop-color="#18132c"/>
+      <stop offset="100%" stop-color="#05030a"/>
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8a2be2"/>
+      <stop offset="50%" stop-color="#c77dff"/>
+      <stop offset="100%" stop-color="#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff007f"/>
+      <stop offset="100%" stop-color="#7928ca"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="400" rx="20" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Grid Lines -->
+  <path d="M0,80 L1200,80 M0,160 L1200,160 M0,240 L1200,240 M0,320 L1200,320" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <path d="M200,0 L200,400 M400,0 L400,400 M600,0 L600,400 M800,0 L800,400 M1000,0 L1000,400" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+
+  <!-- Glow Accents -->
+  <circle cx="150" cy="100" r="180" fill="#8a2be2" opacity="0.15" filter="url(#blur)"/>
+  <circle cx="1050" cy="300" r="160" fill="#00f2fe" opacity="0.15" filter="url(#blur)"/>
+
+  <!-- Toast Mockup Frame -->
+  <rect x="720" y="80" width="400" height="240" rx="16" fill="#1e1838" stroke="url(#primaryGrad)" stroke-width="2" opacity="0.9" filter="url(#glow)"/>
+  
+  <!-- Toast Content Mockup -->
+  <rect x="745" y="105" width="50" height="50" rx="12" fill="url(#accentGrad)"/>
+  <!-- Unicorn / Icon Symbol in Toast -->
+  <path d="M770,118 L775,130 L765,130 Z M765,135 Q770,145 778,140" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <text x="810" y="126" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="16" fill="#ffffff">📊 Backup Progress: 70%</text>
+  <text x="810" y="148" font-family="'Segoe UI', Roboto, sans-serif" font-weight="400" font-size="13" fill="#b8b5d0">Copiados 1,450 MB / 2,100 MB</text>
+  
+  <!-- Progress Bar in Toast Mockup -->
+  <rect x="745" y="175" width="350" height="8" rx="4" fill="#2d2454"/>
+  <rect x="745" y="175" width="245" height="8" rx="4" fill="url(#primaryGrad)"/>
+
+  <!-- Buttons in Toast -->
+  <rect x="745" y="200" width="100" height="30" rx="6" fill="#2d2454" stroke="#8a2be2" stroke-width="1"/>
+  <text x="795" y="220" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">View Log</text>
+
+  <!-- Title & Branding -->
+  <text x="80" y="160" font-family="'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="54" fill="url(#primaryGrad)" filter="url(#glow)">XYZ-WINDOWS-NOTIFY</text>
+  <text x="80" y="210" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="22" fill="#ffffff" letter-spacing="1">Universal AI Agent Toast Notification Skill</text>
+  <text x="80" y="250" font-family="'Segoe UI', Roboto, sans-serif" font-weight="400" font-size="16" fill="#8f8ab6">Native Windows 11 Toasts • Custom AppLogos • Real-Time Progress (%) • BurntToast PowerShell</text>
+
+  <!-- Badge Pill -->
+  <rect x="80" y="280" width="170" height="34" rx="17" fill="url(#accentGrad)"/>
+  <text x="165" y="302" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#ffffff" text-anchor="middle">⚡ v1.0.0 Ready</text>
+</svg>
