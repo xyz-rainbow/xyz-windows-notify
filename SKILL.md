@@ -10,6 +10,12 @@ description: >-
 
 This skill enables any AI agent (Antigravity, Claude, GPT, Cursor, etc.) to trigger native **Windows 11 Toast Notifications** using PowerShell `BurntToast`.
 
+## Installation via Skills CLI
+
+```bash
+npx skills add xyz-rainbow/xyz-windows-notify
+```
+
 ## Key Capabilities
 
 - 🎨 **Custom App Icons**: Pass `-AppLogo "U:\Pictures\Icons\unicorn.jpg"` or custom image paths.
@@ -61,8 +67,8 @@ send_toast("✅ Backup COMPLETADO (100%)", "2,100 archivos copiados exitosamente
 
 To install this skill globally for any AI agent on Windows:
 
-1. Copy `SKILL.md` to your global skill directory (e.g., `~/.gemini/config/skills/windows-notify/SKILL.md` or `C:\Users\<user>\.gemini\config\skills\windows-notify\SKILL.md`).
-2. Ensure `BurntToast` PowerShell module is installed:
-   ```powershell
-   Install-Module BurntToast -Scope CurrentUser -Force -AllowClobber
-   ```
+```bash
+npx skills add xyz-rainbow/xyz-windows-notify
+```
+
+Or manually copy `SKILL.md` to your global skill directory (e.g. `C:\Users\<user>\.gemini\config\skills\windows-notify\SKILL.md`).

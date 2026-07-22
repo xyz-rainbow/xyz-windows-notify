@@ -8,12 +8,27 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%20%7C%207%2B-blue.svg)](https://microsoft.com/powershell)
-[![BurntToast](https://img.shields.io/badge/Module-BurntToast-ff007f.svg)](https://github.com/Windos/BurntToast)
-[![AI Skills](https://img.shields.io/badge/AI%20Agent-Skill-00f2fe.svg)](#global-installation-for-ai-agents)
+[![skills.sh](https://img.shields.io/badge/skills.sh-xyz--windows--notify-00f2fe.svg)](https://skills.sh)
+[![npx skills add](https://img.shields.io/badge/npx%20skills%20add-xyz--rainbow%2Fxyz--windows--notify-ff007f.svg)](#-one-command-installation-skills-cli)
 
 *Elevate your AI agent workflows with native Windows 11 toast notifications, percentage progress bars (%), custom branding icons (`-AppLogo`), and non-blocking background process monitoring.*
 
 </div>
+
+---
+
+## 🚀 One-Command Installation (Skills CLI)
+
+Install this skill into any AI Agent codebase / environment instantly using `npx skills add`:
+
+```bash
+npx skills add xyz-rainbow/xyz-windows-notify
+```
+
+*Or via full repository URL:*
+```bash
+npx skills add https://github.com/xyz-rainbow/xyz-windows-notify
+```
 
 ---
 
@@ -40,7 +55,7 @@
 ## ⚙️ Prerequisites & Setup
 
 ### 1. Install PowerShell BurntToast Module
-Open PowerShell and run:
+Open PowerShell as Administrator / User:
 
 ```powershell
 Install-Module BurntToast -Scope CurrentUser -Force -AllowClobber
@@ -54,22 +69,22 @@ New-BurntToastNotification -Text "BurntToast OK", "Notifications working!"
 
 ---
 
-## 🌐 Global Installation for AI Agents
+## 🌐 Global Installation Options
 
-To equip any AI Agent (Antigravity, Claude, Cursor, AutoGPT) with this skill globally:
+### Method A: `npx skills add` (Recommended)
 
-### Step 1: Copy Skill to Global Configuration
-Copy the `SKILL.md` file to your AI Agent's global skill folder:
+```bash
+npx skills add xyz-rainbow/xyz-windows-notify
+```
+
+### Method B: Manual Global Setup
+
+Copy `SKILL.md` to your AI Agent's global skill folder:
 
 ```powershell
-# Antigravity / Gemini CLI global skill path
 mkdir -p "C:\Users\$env:USERNAME\.gemini\config\skills\windows-notify"
 copy "SKILL.md" "C:\Users\$env:USERNAME\.gemini\config\skills\windows-notify\SKILL.md"
 ```
-
-### Step 2: System Prompt / Skill Directive
-Add the following line to your system prompt or rule file:
-> *"Always use the `windows-notify` skill via BurntToast for background task progress, backups, builds, and notifications with custom icons (`-AppLogo`)."*
 
 ---
 
@@ -106,7 +121,7 @@ notify("✅ Backup Complete (100%)", "2,100 files successfully saved!")
 
 ## 🏷️ GitHub Tags & Metadata
 
-`windows11` `toast-notifications` `burnttoast` `powershell` `ai-agent-skill` `antigravity` `notifications` `automation` `unicorn-icon`
+`skills-sh` `npx-skills-add` `windows11` `toast-notifications` `burnttoast` `powershell` `ai-agent-skill` `antigravity` `notifications` `unicorn-icon`
 
 ---
 
