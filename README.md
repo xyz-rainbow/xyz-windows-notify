@@ -1,6 +1,6 @@
 <div align="center">
 
-![XYZ Windows Notify Banner](assets/banner.svg)
+<img src="assets/banner.svg" width="100%" alt="XYZ Windows Notify Banner" />
 
 # 🦄 XYZ Windows Notify
 
@@ -20,10 +20,10 @@
 ## 📸 Visual Architecture & Workflow
 
 ### System Architecture
-![System Architecture](assets/architecture.svg)
+<img src="assets/architecture.svg" width="100%" alt="System Architecture" />
 
 ### Notification Lifecycle & Progress Milestones
-![Notification Workflow](assets/workflow.svg)
+<img src="assets/workflow.svg" width="100%" alt="Notification Workflow" />
 
 ---
 
