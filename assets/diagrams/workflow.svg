@@ -142,7 +142,7 @@
 
       <rect x="0" y="85" width="187" height="52" rx="7" fill="#2d1d07" stroke="#b45309" stroke-width="1"/>
       <text x="8" y="105" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11" fill="#fef3c7">⚠️ Warning / Exception</text>
-      <text x="8" y="123" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fde68a">"Disk space low on D:\"</text>
+      <text x="8" y="123" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fde68a">"Disk space low on volume"</text>
 
       <rect x="0" y="150" width="187" height="42" rx="6" fill="#201305"/>
       <text x="8" y="167" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fbbf24">Sound: <tspan fill="#ffffff">'Alarm2' / 'Default'</tspan></text>
@@ -176,7 +176,7 @@
 
       <rect x="0" y="85" width="203" height="52" rx="7" fill="#063821" stroke="#059669" stroke-width="1"/>
       <text x="8" y="105" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11" fill="#dcfce7">✅ Task Complete (100%)</text>
-      <text x="8" y="123" font-family="'Segoe UI', sans-serif" font-size="10" fill="#86efac">"2,100 files saved to D:\"</text>
+      <text x="8" y="123" font-family="'Segoe UI', sans-serif" font-size="10" fill="#86efac">"2,100 files verified and saved"</text>
 
       <rect x="0" y="150" width="203" height="42" rx="6" fill="#032415"/>
       <text x="8" y="167" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4ade80">Action Center: <tspan fill="#ffffff">Archived</tspan></text>

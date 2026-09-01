@@ -25,12 +25,12 @@ npx skills add xyz-rainbow/xyz-windows-notify
 
 This skill bundles default branding in its `assets/icons/` directory (`assets/icons/unicorn.jpg` and `assets/icons/icon.jpg`).
 
-When sending a notification, follow this **Smart Resolution Hierarchy** (with backward compatibility):
+When sending a notification, follow this **Smart Resolution Hierarchy**:
 1. **Explicit Parameter**: Path provided via `-AppLogo "path/to/custom_icon.png"`.
 2. **Skill Bundled Icon**: Local path inside the skill directory (e.g. `<skill_dir>/assets/icons/unicorn.jpg`).
 3. **Legacy Bundled Icon**: `<skill_dir>/assets/unicorn.jpg` (for backward compatibility).
-4. **User Default Icon**: Standard user path (e.g. `U:\Pictures\Icons\unicorn.jpg` if available).
-5. **Graceful Fallback**: Native Windows notification without `-AppLogo` if no file exists.
+4. **User Custom Icon Directory**: Environment user path (e.g. `$env:USERPROFILE\Pictures\Icons\custom.png` if present).
+5. **Graceful Fallback**: Native Windows notification without `-AppLogo` if no image file exists.
 
 ---
 
@@ -45,13 +45,13 @@ AI Agents operating with this skill should actively manage visual feedback:
 - **Errors / Critical Alerts**: Warning / Shield icons.
 
 ### 2. Suggesting & Generating New Icons
-- **Where to store icons**: Store new icons in `assets/icons/<name>.png` (within the skill or repo folder) or in the user's icon directory (`U:\Pictures\Icons\`).
+- **Where to store icons**: Store new icons in `assets/icons/<name>.png` (within the skill or repo folder) or in the user's icon directory (`$env:USERPROFILE\Pictures\Icons\`).
 - **Icon Specifications**:
   - Format: `PNG` or `JPG` (square 1:1 aspect ratio).
   - Recommended dimensions: `256x256` or `512x512` pixels.
   - Transparent or clean solid background.
 - **Proactive AI Protocol**:
-  - When starting a new recurring workflow (e.g., a new game server monitor, video rendering pipeline, or scientific data sync), check if a matching icon exists in `assets/icons/`.
+  - When starting a new recurring workflow (e.g., a new game server monitor, video rendering pipeline, or data sync), check if a matching icon exists in `assets/icons/`.
   - If no thematic icon exists, propose:
     > *"I noticed we don't have a specific toast icon for [Task Name]. Would you like me to generate a custom 256x256 icon and save it to `assets/icons/[name].png`?"*
   - Use image generation tools (e.g., `generate_image`) or fetch appropriate assets upon user approval.
@@ -67,7 +67,7 @@ Import-Module BurntToast
 $CandidateIcons = @(
     "$PSScriptRoot\assets\icons\unicorn.jpg",
     "$PSScriptRoot\assets\unicorn.jpg",
-    "U:\Pictures\Icons\unicorn.jpg"
+    "$env:USERPROFILE\Pictures\Icons\custom.png"
 )
 
 $AppLogo = $CandidateIcons | Where-Object { Test-Path $_ } | Select-Object -First 1
@@ -75,12 +75,12 @@ $AppLogo = $CandidateIcons | Where-Object { Test-Path $_ } | Select-Object -Firs
 # Send Notification with Fallback
 if ($AppLogo) {
     New-BurntToastNotification `
-        -Text "🦄 Task Milestone: 50%", "Copied 1,024 MB of 2,048 MB" `
+        -Text "🦄 Task Milestone: 50%", "Processed 1,024 MB of 2,048 MB" `
         -AppLogo $AppLogo `
         -Sound 'Default'
 } else {
     New-BurntToastNotification `
-        -Text "📊 Task Milestone: 50%", "Copied 1,024 MB of 2,048 MB" `
+        -Text "📊 Task Milestone: 50%", "Processed 1,024 MB of 2,048 MB" `
         -Sound 'Default'
 }
 ```
@@ -96,11 +96,13 @@ import os
 def send_toast(title: str, message: str, icon_path: str = None):
     # Candidate icon paths with backward compatibility
     base_dir = os.path.dirname(__file__)
+    user_icon = os.path.expanduser("~/Pictures/Icons/custom.png")
+    
     candidates = [
         icon_path,
         os.path.join(base_dir, "assets", "icons", "unicorn.jpg"),
         os.path.join(base_dir, "assets", "unicorn.jpg"),
-        r"U:\Pictures\Icons\unicorn.jpg"
+        user_icon
     ]
 
     selected_icon = next((c for c in candidates if c and os.path.exists(c)), None)
@@ -113,9 +115,9 @@ def send_toast(title: str, message: str, icon_path: str = None):
     subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", ps_cmd], capture_output=True)
 
 # Example Usage across lifecycle
-send_toast("🚀 Backup Started", "Analyzing directories in L:\\ and U:\\...")
-send_toast("📊 Progress: 50%", "Transferred 1,024 MB / 2,048 MB")
-send_toast("✅ Backup Completed (100%)", "2,100 files successfully synced to D:\\")
+send_toast("🚀 Task Started", "Scanning workspace files and calculating checksums...")
+send_toast("📊 Progress: 50%", "Processed 1,024 MB of 2,048 MB")
+send_toast("✅ Task Complete (100%)", "2,100 files successfully processed!")
 ```
 
 ---

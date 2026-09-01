@@ -115,7 +115,7 @@
     <g transform="translate(102, 75)">
       <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="16" fill="#ffffff">🚀 Backup Progress: 75%</text>
       <text x="0" y="24" font-family="'Segoe UI', sans-serif" font-weight="400" font-size="13" fill="#b8b3d6">1,575 MB of 2,100 MB transferred</text>
-      <text x="0" y="44" font-family="'Segoe UI', sans-serif" font-weight="400" font-size="12" fill="#7d78a1">Syncing Kindle &amp; Calibre library to D:\</text>
+      <text x="0" y="44" font-family="'Segoe UI', sans-serif" font-weight="400" font-size="12" fill="#7d78a1">Syncing project workspace to backup destination</text>
     </g>
 
     <!-- Interactive Progress Bar -->

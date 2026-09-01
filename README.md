@@ -71,7 +71,7 @@ You can add custom icons for your specific projects and workflows:
 | :--- | :--- | :--- |
 | **`assets/icons/` (Bundled)** | Default branding & themed task icons | `assets/icons/unicorn.jpg`, `assets/icons/deploy.png` |
 | **`assets/diagrams/`** | Visual documentation diagrams (SVGs) | `assets/diagrams/banner.svg`, `assets/diagrams/workflow.svg` |
-| **User Global Folder** | Personal system-wide icon repository | `U:\Pictures\Icons\unicorn.jpg` or `C:\Users\<user>\Pictures\Icons\` |
+| **User Global Folder** | Personal system-wide icon repository | `%USERPROFILE%\Pictures\Icons\custom.png` |
 | **Custom Project Path** | One-off icon path passed directly | `C:\Projects\my-app\assets\logo.png` |
 
 ### 2. Recommended Icon Specifications
@@ -100,8 +100,8 @@ graph TD
 ```
 
 #### How AI Agents Proactively Suggest New Icons:
-When an agent detects a distinct recurring workflow (such as a database migration, game server sync, or media render), it will suggest:
-> *"I noticed we don't have a dedicated notification icon for **Minecraft Server Backup**. Would you like me to generate a custom 256x256 icon and save it to `assets/icons/minecraft.png` for future toasts?"*
+When an agent detects a distinct recurring workflow (such as a database migration, build pipeline, or data sync), it will suggest:
+> *"I noticed we don't have a dedicated notification icon for **Database Sync**. Would you like me to generate a custom 256x256 icon and save it to `assets/icons/database.png` for future toasts?"*
 
 ---
 
@@ -133,7 +133,7 @@ Import-Module BurntToast
 $Candidates = @(
     "$PSScriptRoot\assets\icons\unicorn.jpg",
     "$PSScriptRoot\assets\unicorn.jpg",
-    "U:\Pictures\Icons\unicorn.jpg"
+    "$env:USERPROFILE\Pictures\Icons\custom.png"
 )
 
 $AppLogo = $Candidates | Where-Object { Test-Path $_ } | Select-Object -First 1
@@ -141,12 +141,12 @@ $AppLogo = $Candidates | Where-Object { Test-Path $_ } | Select-Object -First 1
 # Send Toast
 if ($AppLogo) {
     New-BurntToastNotification `
-        -Text "🦄 Backup Progress: 75%", "1,575 MB of 2,100 MB transferred" `
+        -Text "🦄 Progress: 75%", "1,575 MB of 2,100 MB transferred" `
         -AppLogo $AppLogo `
         -Sound 'Default'
 } else {
     New-BurntToastNotification `
-        -Text "📊 Backup Progress: 75%", "1,575 MB of 2,100 MB transferred" `
+        -Text "📊 Progress: 75%", "1,575 MB of 2,100 MB transferred" `
         -Sound 'Default'
 }
 ```
@@ -164,11 +164,13 @@ def send_toast(title: str, message: str, icon_path: str = None, sound: str = "De
     Sends a native Windows toast notification (Windows 10 & 11) with automatic icon resolution.
     """
     base_dir = os.path.dirname(__file__)
+    user_icon = os.path.expanduser("~/Pictures/Icons/custom.png")
+    
     candidates = [
         icon_path,
         os.path.join(base_dir, "assets", "icons", "unicorn.jpg"),
         os.path.join(base_dir, "assets", "unicorn.jpg"),
-        r"U:\Pictures\Icons\unicorn.jpg"
+        user_icon
     ]
     
     selected_icon = next((c for c in candidates if c and os.path.exists(c)), None)
@@ -182,7 +184,7 @@ def send_toast(title: str, message: str, icon_path: str = None, sound: str = "De
 
 # Example: Task Lifecycle Monitoring
 if __name__ == "__main__":
-    send_toast("🚀 Task Started", "Beginning backup of Kindle and Calibre libraries...")
+    send_toast("🚀 Task Started", "Beginning backup of project workspace...")
     send_toast("📊 Progress: 50%", "Transferred 1,024 MB / 2,048 MB")
     send_toast("✅ Task Complete (100%)", "2,100 files successfully verified and stored!")
 ```
