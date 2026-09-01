@@ -23,13 +23,14 @@ npx skills add xyz-rainbow/xyz-windows-notify
 
 ## 🦄 Bundled Assets & Smart Icon Resolution
 
-This skill bundles default branding in its `assets/` directory (`assets/unicorn.jpg` and `assets/icon.jpg`).
+This skill bundles default branding in its `assets/icons/` directory (`assets/icons/unicorn.jpg` and `assets/icons/icon.jpg`).
 
-When sending a notification, follow this **Smart Resolution Hierarchy**:
+When sending a notification, follow this **Smart Resolution Hierarchy** (with backward compatibility):
 1. **Explicit Parameter**: Path provided via `-AppLogo "path/to/custom_icon.png"`.
-2. **Skill Bundled Asset**: Local path inside the skill directory (e.g. `<skill_dir>/assets/unicorn.jpg`).
-3. **User Default Icon**: Standard user path (e.g. `U:\Pictures\Icons\unicorn.jpg` if available).
-4. **Graceful Fallback**: Native Windows notification without `-AppLogo` if no file exists.
+2. **Skill Bundled Icon**: Local path inside the skill directory (e.g. `<skill_dir>/assets/icons/unicorn.jpg`).
+3. **Legacy Bundled Icon**: `<skill_dir>/assets/unicorn.jpg` (for backward compatibility).
+4. **User Default Icon**: Standard user path (e.g. `U:\Pictures\Icons\unicorn.jpg` if available).
+5. **Graceful Fallback**: Native Windows notification without `-AppLogo` if no file exists.
 
 ---
 
@@ -38,7 +39,7 @@ When sending a notification, follow this **Smart Resolution Hierarchy**:
 AI Agents operating with this skill should actively manage visual feedback:
 
 ### 1. Contextual Icon Selection
-- **General / Default**: Use `assets/unicorn.jpg` or `assets/icon.jpg`.
+- **General / Default**: Use `assets/icons/unicorn.jpg` or `assets/icons/icon.jpg`.
 - **Database / Backups**: If specialized icons exist (e.g. `assets/icons/backup.png` or `assets/icons/database.png`), prioritize them.
 - **Deployments / Server**: Rocket / Server icons.
 - **Errors / Critical Alerts**: Warning / Shield icons.
@@ -50,7 +51,7 @@ AI Agents operating with this skill should actively manage visual feedback:
   - Recommended dimensions: `256x256` or `512x512` pixels.
   - Transparent or clean solid background.
 - **Proactive AI Protocol**:
-  - When starting a new recurring workflow (e.g., a new game server monitor, video rendering pipeline, or scientific data sync), check if a matching icon exists.
+  - When starting a new recurring workflow (e.g., a new game server monitor, video rendering pipeline, or scientific data sync), check if a matching icon exists in `assets/icons/`.
   - If no thematic icon exists, propose:
     > *"I noticed we don't have a specific toast icon for [Task Name]. Would you like me to generate a custom 256x256 icon and save it to `assets/icons/[name].png`?"*
   - Use image generation tools (e.g., `generate_image`) or fetch appropriate assets upon user approval.
@@ -62,20 +63,20 @@ AI Agents operating with this skill should actively manage visual feedback:
 ```powershell
 Import-Module BurntToast
 
-# Resolve Default / Bundled Icon
-$IconPath = if (Test-Path "$PSScriptRoot\assets\unicorn.jpg") {
-    "$PSScriptRoot\assets\unicorn.jpg"
-} elseif (Test-Path "U:\Pictures\Icons\unicorn.jpg") {
+# Resolve Default / Bundled Icon (with Backward Compatibility)
+$CandidateIcons = @(
+    "$PSScriptRoot\assets\icons\unicorn.jpg",
+    "$PSScriptRoot\assets\unicorn.jpg",
     "U:\Pictures\Icons\unicorn.jpg"
-} else {
-    $null
-}
+)
+
+$AppLogo = $CandidateIcons | Where-Object { Test-Path $_ } | Select-Object -First 1
 
 # Send Notification with Fallback
-if ($IconPath) {
+if ($AppLogo) {
     New-BurntToastNotification `
         -Text "🦄 Task Milestone: 50%", "Copied 1,024 MB of 2,048 MB" `
-        -AppLogo $IconPath `
+        -AppLogo $AppLogo `
         -Sound 'Default'
 } else {
     New-BurntToastNotification `
@@ -93,15 +94,16 @@ import subprocess
 import os
 
 def send_toast(title: str, message: str, icon_path: str = None):
-    # Fallback paths
-    bundled_icon = os.path.join(os.path.dirname(__file__), "assets", "unicorn.jpg")
-    user_icon = r"U:\Pictures\Icons\unicorn.jpg"
+    # Candidate icon paths with backward compatibility
+    base_dir = os.path.dirname(__file__)
+    candidates = [
+        icon_path,
+        os.path.join(base_dir, "assets", "icons", "unicorn.jpg"),
+        os.path.join(base_dir, "assets", "unicorn.jpg"),
+        r"U:\Pictures\Icons\unicorn.jpg"
+    ]
 
-    selected_icon = None
-    for candidate in [icon_path, bundled_icon, user_icon]:
-        if candidate and os.path.exists(candidate):
-            selected_icon = candidate
-            break
+    selected_icon = next((c for c in candidates if c and os.path.exists(c)), None)
 
     if selected_icon:
         ps_cmd = f"Import-Module BurntToast; New-BurntToastNotification -Text '{title}', '{message}' -AppLogo '{selected_icon}' -Sound 'Default'"

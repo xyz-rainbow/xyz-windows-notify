@@ -143,7 +143,7 @@
     <g transform="translate(24, 245)">
       <rect width="392" height="28" rx="6" fill="#130e26"/>
       <circle cx="16" cy="14" r="4" fill="#00ff87"/>
-      <text x="28" y="18" font-family="'Segoe UI', sans-serif" font-size="11.5" fill="#a9a3cc">Icon resolved from: <tspan fill="#00ff87">assets/unicorn.jpg</tspan></text>
+      <text x="28" y="18" font-family="'Segoe UI', sans-serif" font-size="11.5" fill="#a9a3cc">Icon resolved from: <tspan fill="#00ff87">assets/icons/unicorn.jpg</tspan></text>
     </g>
   </g>
 </svg>

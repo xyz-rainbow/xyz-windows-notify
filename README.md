@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" width="100%" alt="XYZ Windows Notify Banner" />
+<img src="assets/diagrams/banner.svg" width="100%" alt="XYZ Windows Notify Banner" />
 
 # 🦄 XYZ Windows Notify
 
@@ -22,21 +22,21 @@
 
 ### 🏗️ System Architecture & Smart Resolution Pipeline
 <div align="center">
-  <img src="assets/architecture.svg" width="100%" alt="System Architecture and Icon Resolution Pipeline" />
+  <img src="assets/diagrams/architecture.svg" width="100%" alt="System Architecture and Icon Resolution Pipeline" />
 </div>
 
 <br/>
 
 ### 🔄 Notification Lifecycle & Progress Milestones
 <div align="center">
-  <img src="assets/workflow.svg" width="100%" alt="Notification Lifecycle Workflow" />
+  <img src="assets/diagrams/workflow.svg" width="100%" alt="Notification Lifecycle Workflow" />
 </div>
 
 ---
 
 ## ✨ Key Features
 
-- 🦄 **Bundled Default Branding**: Out-of-the-box unicorn logo bundled directly in `assets/unicorn.jpg` and `assets/icon.jpg`.
+- 🦄 **Bundled Default Branding**: Out-of-the-box unicorn logo bundled directly in `assets/icons/unicorn.jpg` and `assets/icons/icon.jpg`.
 - 🪟 **Universal Windows Support**: Fully compatible with both **Windows 10** and **Windows 11** via the PowerShell `BurntToast` engine.
 - 🤖 **AI-Driven Icon Intelligence**: AI agents can detect workflow domains, select themed icons, or suggest generating custom 256x256 icons.
 - 📊 **Real-Time Progress Milestones (%)**: Send non-blocking progress updates at 10%, 25%, 50%, 75%, and 90% milestones.
@@ -69,8 +69,8 @@ You can add custom icons for your specific projects and workflows:
 
 | Location | Purpose | Example Path |
 | :--- | :--- | :--- |
-| **`assets/` (Bundled)** | Default fallback branding for the skill | `assets/unicorn.jpg`, `assets/icon.jpg` |
-| **`assets/icons/`** | Thematic task icons (backup, build, deploy, db) | `assets/icons/deploy.png`, `assets/icons/db.png` |
+| **`assets/icons/` (Bundled)** | Default branding & themed task icons | `assets/icons/unicorn.jpg`, `assets/icons/deploy.png` |
+| **`assets/diagrams/`** | Visual documentation diagrams (SVGs) | `assets/diagrams/banner.svg`, `assets/diagrams/workflow.svg` |
 | **User Global Folder** | Personal system-wide icon repository | `U:\Pictures\Icons\unicorn.jpg` or `C:\Users\<user>\Pictures\Icons\` |
 | **Custom Project Path** | One-off icon path passed directly | `C:\Projects\my-app\assets\logo.png` |
 
@@ -91,7 +91,7 @@ graph TD
     A[AI Agent Starts Long Task] --> B{Does specific icon exist?}
     B -- Yes --> C[Use Context Icon e.g. assets/icons/build.png]
     B -- No --> D{Is it a new unique workflow?}
-    D -- No --> E[Fallback to Bundled assets/unicorn.jpg]
+    D -- No --> E[Fallback to Bundled assets/icons/unicorn.jpg]
     D -- Yes --> F[AI Proactively Suggests Creating New Icon]
     F --> G[User Approves -> Generate & Save to assets/icons/]
     G --> H[Send Notification with New Custom Icon]
@@ -124,22 +124,19 @@ New-BurntToastNotification -Text "BurntToast OK", "Notifications configured succ
 
 ## 💻 Code Snippets & Usage Examples
 
-### 🔹 PowerShell Integration (with Fallback Resolution)
+### 🔹 PowerShell Integration (with Backward-Compatible Resolution)
 
 ```powershell
 Import-Module BurntToast
 
-# Smart Icon Resolution
-$SkillIcon = "$PSScriptRoot\assets\unicorn.jpg"
-$UserIcon  = "U:\Pictures\Icons\unicorn.jpg"
+# Smart Icon Resolution (icons/ -> legacy root -> user folder)
+$Candidates = @(
+    "$PSScriptRoot\assets\icons\unicorn.jpg",
+    "$PSScriptRoot\assets\unicorn.jpg",
+    "U:\Pictures\Icons\unicorn.jpg"
+)
 
-$AppLogo = if (Test-Path $SkillIcon) {
-    $SkillIcon
-} elseif (Test-Path $UserIcon) {
-    $UserIcon
-} else {
-    $null
-}
+$AppLogo = $Candidates | Where-Object { Test-Path $_ } | Select-Object -First 1
 
 # Send Toast
 if ($AppLogo) {
@@ -166,9 +163,11 @@ def send_toast(title: str, message: str, icon_path: str = None, sound: str = "De
     """
     Sends a native Windows toast notification (Windows 10 & 11) with automatic icon resolution.
     """
+    base_dir = os.path.dirname(__file__)
     candidates = [
         icon_path,
-        os.path.join(os.path.dirname(__file__), "assets", "unicorn.jpg"),
+        os.path.join(base_dir, "assets", "icons", "unicorn.jpg"),
+        os.path.join(base_dir, "assets", "unicorn.jpg"),
         r"U:\Pictures\Icons\unicorn.jpg"
     ]
     
