@@ -1,63 +1,193 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" width="1100" height="500">
   <defs>
-    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090812"/>
-      <stop offset="100%" stop-color="#140f26"/>
+    <!-- Background -->
+    <linearGradient id="wfBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090714"/>
+      <stop offset="50%" stop-color="#120c24"/>
+      <stop offset="100%" stop-color="#07050d"/>
     </linearGradient>
-    <linearGradient id="stepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#c77dff"/>
-      <stop offset="100%" stop-color="#8a2be2"/>
+
+    <!-- Phase Gradients -->
+    <linearGradient id="phase1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#6b21a8"/>
     </linearGradient>
+
+    <linearGradient id="phase2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <linearGradient id="phase3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <linearGradient id="phase4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff87"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <filter id="wfShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
   </defs>
 
-  <rect width="1000" height="450" rx="16" fill="url(#bg2)"/>
+  <!-- Background -->
+  <rect width="1100" height="500" rx="20" fill="url(#wfBg)"/>
 
-  <text x="500" y="45" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="22" fill="#ffffff" text-anchor="middle">Notification Lifecycle &amp; Progress Milestone Workflow</text>
-
-  <!-- Step 1: Start -->
-  <g transform="translate(70, 110)">
-    <rect width="200" height="240" rx="12" fill="#1b1430" stroke="#8a2be2" stroke-width="2"/>
-    <circle cx="100" cy="50" r="28" fill="url(#stepGrad)"/>
-    <text x="100" y="58" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="20" fill="#ffffff" text-anchor="middle">1</text>
-    <text x="100" y="105" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="16" fill="#ffffff" text-anchor="middle">START</text>
-    <text x="100" y="135" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Initiates task &amp; scans</text>
-    <text x="100" y="155" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">calculates total size</text>
-    <rect x="20" y="180" width="160" height="35" rx="6" fill="#291e4a"/>
-    <text x="100" y="202" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#c77dff" text-anchor="middle">Sends "Backup Iniciado" Toast</text>
+  <!-- Subtle Grid -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <path d="M0,100 H1100 M0,200 H1100 M0,300 H1100 M0,400 H1100"/>
+    <path d="M150,0 V500 M300,0 V500 M450,0 V500 M600,0 V500 M750,0 V500 M900,0 V500 M1050,0 V500"/>
   </g>
 
-  <!-- Arrow 1-2 -->
-  <path d="M280,230 L340,230" stroke="#c77dff" stroke-width="3"/>
-  <polygon points="340,225 350,230 340,235" fill="#c77dff"/>
-
-  <!-- Step 2: In-Progress (%) -->
-  <g transform="translate(350, 110)">
-    <rect width="300" height="240" rx="12" fill="#1b1430" stroke="#00f2fe" stroke-width="2"/>
-    <circle cx="150" cy="50" r="28" fill="#00c6ff"/>
-    <text x="150" y="58" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="20" fill="#ffffff" text-anchor="middle">2</text>
-    <text x="150" y="105" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="16" fill="#ffffff" text-anchor="middle">PROGRESS MILESTONES (%)</text>
-    <text x="150" y="135" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Tracks copied bytes in real-time</text>
-    <text x="150" y="155" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Triggers Toast every 10% step</text>
-    <!-- Mini progress preview -->
-    <rect x="30" y="175" width="240" height="45" rx="8" fill="#102542" stroke="#00c6ff" stroke-width="1"/>
-    <text x="40" y="195" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ffffff">Progreso: 40% (800MB/2000MB)</text>
-    <rect x="40" y="205" width="220" height="6" rx="3" fill="#1c3a63"/>
-    <rect x="40" y="205" width="88" height="6" rx="3" fill="#00f2fe"/>
+  <!-- Title Header -->
+  <g transform="translate(550, 48)" text-anchor="middle">
+    <rect x="-170" y="-18" width="340" height="26" rx="13" fill="#1b1233" stroke="#3b2b63" stroke-width="1"/>
+    <text x="0" y="-1" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="11" fill="#00f2fe" letter-spacing="1.5">NOTIFICATION LIFECYCLE &amp; MILESTONES</text>
+    <text x="0" y="30" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="23" fill="#ffffff">Step-by-Step AI Notification Workflow</text>
   </g>
 
-  <!-- Arrow 2-3 -->
-  <path d="M660,230 L720,230" stroke="#00f2fe" stroke-width="3"/>
-  <polygon points="720,225 730,230 720,235" fill="#00f2fe"/>
+  <!-- 4 Step Columns -->
 
-  <!-- Step 3: Complete -->
-  <g transform="translate(730, 110)">
-    <rect width="200" height="240" rx="12" fill="#1b1430" stroke="#00ff87" stroke-width="2"/>
-    <circle cx="100" cy="50" r="28" fill="#00ff87"/>
-    <text x="100" y="58" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="20" fill="#0c0a14" text-anchor="middle">3</text>
-    <text x="100" y="105" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="16" fill="#ffffff" text-anchor="middle">COMPLETE</text>
-    <text x="100" y="135" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Reaches 100%</text>
-    <text x="100" y="155" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a49ecb" text-anchor="middle">Logs summary statistics</text>
-    <rect x="20" y="180" width="160" height="35" rx="6" fill="#133827"/>
-    <text x="100" y="202" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#00ff87" text-anchor="middle">Sends "100% Finalizado" Toast</text>
+  <!-- STEP 1: INITIALIZE & ICON RESOLVE -->
+  <g transform="translate(40, 125)" filter="url(#wfShadow)">
+    <rect width="235" height="300" rx="14" fill="#140e26" stroke="#9333ea" stroke-width="1.8"/>
+    
+    <!-- Step Badge Circle -->
+    <circle cx="34" cy="34" r="18" fill="url(#phase1Grad)"/>
+    <text x="34" y="40" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="15" fill="#ffffff" text-anchor="middle">01</text>
+    
+    <text x="62" y="32" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#ffffff">INIT &amp; ICON SELECTION</text>
+    <text x="62" y="48" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#a49ecc">Task Launch Phase</text>
+
+    <!-- Inner Description -->
+    <g transform="translate(16, 75)">
+      <text x="0" y="14" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11.5" fill="#c77dff">AI Assessment:</text>
+      <text x="0" y="32" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• Scans task scope &amp; files</text>
+      <text x="0" y="48" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• Matches domain context</text>
+      <text x="0" y="64" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• Selects or suggests new icon</text>
+
+      <rect x="0" y="85" width="203" height="52" rx="7" fill="#201138" stroke="#4a1d7a" stroke-width="1"/>
+      <text x="8" y="105" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11" fill="#e9d5ff">🚀 Toast: Task Started</text>
+      <text x="8" y="123" font-family="'Segoe UI', sans-serif" font-size="10" fill="#a49ecc">"Backup / Build initiated..."</text>
+
+      <rect x="0" y="150" width="203" height="42" rx="6" fill="#180c29"/>
+      <text x="8" y="167" font-family="'Segoe UI', sans-serif" font-size="10" fill="#c77dff">Default: <tspan fill="#ffffff">assets/unicorn.jpg</tspan></text>
+      <text x="8" y="182" font-family="'Segoe UI', sans-serif" font-size="10" fill="#7d78a1">Or custom / generated icon</text>
+    </g>
+  </g>
+
+  <!-- Connector 1-2 -->
+  <g transform="translate(280, 275)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#9333ea" stroke-width="2.5"/>
+    <polygon points="20,-4 26,0 20,4" fill="#9333ea"/>
+  </g>
+
+  <!-- STEP 2: MILESTONE MONITORING -->
+  <g transform="translate(310, 125)" filter="url(#wfShadow)">
+    <rect width="235" height="300" rx="14" fill="#140e26" stroke="#00f2fe" stroke-width="1.8"/>
+    
+    <!-- Step Badge Circle -->
+    <circle cx="34" cy="34" r="18" fill="url(#phase2Grad)"/>
+    <text x="34" y="40" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="15" fill="#ffffff" text-anchor="middle">02</text>
+    
+    <text x="62" y="32" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#ffffff">PROGRESS MILESTONES</text>
+    <text x="62" y="48" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#a49ecc">Real-Time Telemetry</text>
+
+    <!-- Inner Description -->
+    <g transform="translate(16, 75)">
+      <text x="0" y="14" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11.5" fill="#38bdf8">Incremental Steps (%):</text>
+      <text x="0" y="32" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• Evaluates step percentages</text>
+      <text x="0" y="48" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• 10% • 25% • 50% • 75% • 90%</text>
+      <text x="0" y="64" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• Non-blocking background toast</text>
+
+      <rect x="0" y="85" width="203" height="60" rx="7" fill="#08253a" stroke="#0284c7" stroke-width="1"/>
+      <text x="8" y="103" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11" fill="#e0f2fe">📊 Progress: 50%</text>
+      <text x="8" y="119" font-family="'Segoe UI', sans-serif" font-size="10" fill="#7dd3fc">1,024 MB of 2,048 MB</text>
+      <!-- Mini progress bar -->
+      <rect x="8" y="128" width="187" height="5" rx="2.5" fill="#0e3f61"/>
+      <rect x="8" y="128" width="94" height="5" rx="2.5" fill="#00f2fe"/>
+
+      <rect x="0" y="155" width="203" height="37" rx="6" fill="#041b2b"/>
+      <text x="8" y="171" font-family="'Segoe UI', sans-serif" font-size="10" fill="#38bdf8">Sound: <tspan fill="#ffffff">'Default' / silent</tspan></text>
+      <text x="8" y="185" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#7d78a1">Quiet non-intrusive updates</text>
+    </g>
+  </g>
+
+  <!-- Connector 2-3 -->
+  <g transform="translate(550, 275)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#00f2fe" stroke-width="2.5"/>
+    <polygon points="20,-4 26,0 20,4" fill="#00f2fe"/>
+  </g>
+
+  <!-- STEP 3: EXCEPTION / WARNING -->
+  <g transform="translate(580, 125)" filter="url(#wfShadow)">
+    <rect width="215" height="300" rx="14" fill="#140e26" stroke="#f59e0b" stroke-width="1.8"/>
+    
+    <!-- Step Badge Circle -->
+    <circle cx="34" cy="34" r="18" fill="url(#phase3Grad)"/>
+    <text x="34" y="40" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="15" fill="#ffffff" text-anchor="middle">03</text>
+    
+    <text x="62" y="32" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#ffffff">EXCEPTION / ALERT</text>
+    <text x="62" y="48" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#a49ecc">Error Interception</text>
+
+    <!-- Inner Description -->
+    <g transform="translate(14, 75)">
+      <text x="0" y="14" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11.5" fill="#fbbf24">Anomaly Handling:</text>
+      <text x="0" y="32" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• Subprocess non-zero exit</text>
+      <text x="0" y="48" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• Disk full / timeout detection</text>
+      <text x="0" y="64" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• High-priority audio alert</text>
+
+      <rect x="0" y="85" width="187" height="52" rx="7" fill="#2d1d07" stroke="#b45309" stroke-width="1"/>
+      <text x="8" y="105" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11" fill="#fef3c7">⚠️ Warning / Exception</text>
+      <text x="8" y="123" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fde68a">"Disk space low on D:\"</text>
+
+      <rect x="0" y="150" width="187" height="42" rx="6" fill="#201305"/>
+      <text x="8" y="167" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fbbf24">Sound: <tspan fill="#ffffff">'Alarm2' / 'Default'</tspan></text>
+      <text x="8" y="182" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#7d78a1">Instant user alert</text>
+    </g>
+  </g>
+
+  <!-- Connector 3-4 -->
+  <g transform="translate(800, 275)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#f59e0b" stroke-width="2.5"/>
+    <polygon points="20,-4 26,0 20,4" fill="#f59e0b"/>
+  </g>
+
+  <!-- STEP 4: COMPLETION (100%) -->
+  <g transform="translate(825, 125)" filter="url(#wfShadow)">
+    <rect width="235" height="300" rx="14" fill="#140e26" stroke="#00ff87" stroke-width="1.8"/>
+    
+    <!-- Step Badge Circle -->
+    <circle cx="34" cy="34" r="18" fill="url(#phase4Grad)"/>
+    <text x="34" y="40" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="15" fill="#000000" text-anchor="middle">04</text>
+    
+    <text x="62" y="32" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#ffffff">COMPLETE (100%)</text>
+    <text x="62" y="48" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#a49ecc">Summary &amp; Metrics</text>
+
+    <!-- Inner Description -->
+    <g transform="translate(16, 75)">
+      <text x="0" y="14" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11.5" fill="#4ade80">Success Verification:</text>
+      <text x="0" y="32" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• 100% data transferred</text>
+      <text x="0" y="48" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• Elapsed time calculation</text>
+      <text x="0" y="64" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8f8ab0">• Final audit &amp; log summary</text>
+
+      <rect x="0" y="85" width="203" height="52" rx="7" fill="#063821" stroke="#059669" stroke-width="1"/>
+      <text x="8" y="105" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11" fill="#dcfce7">✅ Task Complete (100%)</text>
+      <text x="8" y="123" font-family="'Segoe UI', sans-serif" font-size="10" fill="#86efac">"2,100 files saved to D:\"</text>
+
+      <rect x="0" y="150" width="203" height="42" rx="6" fill="#032415"/>
+      <text x="8" y="167" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4ade80">Action Center: <tspan fill="#ffffff">Archived</tspan></text>
+      <text x="8" y="182" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#7d78a1">Ready in Windows Notification Hub</text>
+    </g>
+  </g>
+
+  <!-- Footer Info -->
+  <g transform="translate(550, 470)" text-anchor="middle">
+    <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="12" fill="#756f96">
+      Fully autonomous lifecycle • Non-blocking async execution • Customizable sound alerts
+    </text>
   </g>
 </svg>

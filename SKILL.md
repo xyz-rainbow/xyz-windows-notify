@@ -1,74 +1,126 @@
 ---
 name: windows-notify
 description: >-
-  Send Windows 11 toast notifications with custom app icons (-AppLogo), real-time progress percentages (%),
-  start/completion alerts, and sound feedback using PowerShell BurntToast.
+  Send Windows toast notifications (compatible with Windows 10 & 11) with custom app icons (-AppLogo), real-time
+  progress percentages (%), start/completion alerts, and sound feedback using PowerShell BurntToast. Includes bundled
+  branding, smart icon resolution, and AI-driven icon selection/generation guidelines.
   Use whenever a background task, backup, build, server restart, or long process requires visual notification feedback.
 ---
 
 # XYZ Windows Notify — Universal AI Agent Skill
 
-This skill enables any AI agent (Antigravity, Claude, GPT, Cursor, etc.) to trigger native **Windows 11 Toast Notifications** using PowerShell `BurntToast`.
+This skill enables any AI agent (Antigravity, Claude, GPT, Cursor, Trae, Pi, Grok, etc.) to trigger native **Windows Toast Notifications** (compatible with **Windows 10 & Windows 11**) using PowerShell `BurntToast` with custom branding, percentage milestones, and dynamic icon management.
 
-## Installation via Skills CLI
+---
+
+## 🚀 Installation via Skills CLI
 
 ```bash
 npx skills add xyz-rainbow/xyz-windows-notify
 ```
 
-## Key Capabilities
+---
 
-- 🎨 **Custom App Icons**: Pass `-AppLogo "U:\Pictures\Icons\unicorn.jpg"` or custom image paths.
-- 📊 **Percentage Progress Updates (%)**: Send notifications at milestones (every 10%, 25%, etc.).
-- 🚀 **Lifecycle Alerts**: Start, In-Progress, Success (100%), and Error notifications.
-- 🔊 **Sound Feedback**: Play Windows native notification sounds (`-Sound 'Default'`).
+## 🦄 Bundled Assets & Smart Icon Resolution
+
+This skill bundles default branding in its `assets/` directory (`assets/unicorn.jpg` and `assets/icon.jpg`).
+
+When sending a notification, follow this **Smart Resolution Hierarchy**:
+1. **Explicit Parameter**: Path provided via `-AppLogo "path/to/custom_icon.png"`.
+2. **Skill Bundled Asset**: Local path inside the skill directory (e.g. `<skill_dir>/assets/unicorn.jpg`).
+3. **User Default Icon**: Standard user path (e.g. `U:\Pictures\Icons\unicorn.jpg` if available).
+4. **Graceful Fallback**: Native Windows notification without `-AppLogo` if no file exists.
 
 ---
 
-## Quick Start (PowerShell)
+## 🤖 AI Agent Guidelines for Custom Icons & Generation
+
+AI Agents operating with this skill should actively manage visual feedback:
+
+### 1. Contextual Icon Selection
+- **General / Default**: Use `assets/unicorn.jpg` or `assets/icon.jpg`.
+- **Database / Backups**: If specialized icons exist (e.g. `assets/icons/backup.png` or `assets/icons/database.png`), prioritize them.
+- **Deployments / Server**: Rocket / Server icons.
+- **Errors / Critical Alerts**: Warning / Shield icons.
+
+### 2. Suggesting & Generating New Icons
+- **Where to store icons**: Store new icons in `assets/icons/<name>.png` (within the skill or repo folder) or in the user's icon directory (`U:\Pictures\Icons\`).
+- **Icon Specifications**:
+  - Format: `PNG` or `JPG` (square 1:1 aspect ratio).
+  - Recommended dimensions: `256x256` or `512x512` pixels.
+  - Transparent or clean solid background.
+- **Proactive AI Protocol**:
+  - When starting a new recurring workflow (e.g., a new game server monitor, video rendering pipeline, or scientific data sync), check if a matching icon exists.
+  - If no thematic icon exists, propose:
+    > *"I noticed we don't have a specific toast icon for [Task Name]. Would you like me to generate a custom 256x256 icon and save it to `assets/icons/[name].png`?"*
+  - Use image generation tools (e.g., `generate_image`) or fetch appropriate assets upon user approval.
+
+---
+
+## 💻 PowerShell Integration
 
 ```powershell
 Import-Module BurntToast
 
-# Simple Toast Notification with Custom Icon
-New-BurntToastNotification `
-    -Text "🦄 Task Started", "Backup process is now running in background..." `
-    -AppLogo "U:\Pictures\Icons\unicorn.jpg" `
-    -Sound 'Default'
+# Resolve Default / Bundled Icon
+$IconPath = if (Test-Path "$PSScriptRoot\assets\unicorn.jpg") {
+    "$PSScriptRoot\assets\unicorn.jpg"
+} elseif (Test-Path "U:\Pictures\Icons\unicorn.jpg") {
+    "U:\Pictures\Icons\unicorn.jpg"
+} else {
+    $null
+}
+
+# Send Notification with Fallback
+if ($IconPath) {
+    New-BurntToastNotification `
+        -Text "🦄 Task Milestone: 50%", "Copied 1,024 MB of 2,048 MB" `
+        -AppLogo $IconPath `
+        -Sound 'Default'
+} else {
+    New-BurntToastNotification `
+        -Text "📊 Task Milestone: 50%", "Copied 1,024 MB of 2,048 MB" `
+        -Sound 'Default'
+}
 ```
 
 ---
 
-## Python Integration Pattern
+## 🐍 Python Integration Pattern
 
 ```python
 import subprocess
 import os
 
-def send_toast(title, message, icon_path="U:\\Pictures\\Icons\\unicorn.jpg"):
-    try:
-        if os.path.exists(icon_path):
-            ps_cmd = f"Import-Module BurntToast; New-BurntToastNotification -Text '{title}', '{message}' -AppLogo '{icon_path}' -Sound 'Default'"
-        else:
-            ps_cmd = f"Import-Module BurntToast; New-BurntToastNotification -Text '{title}', '{message}' -Sound 'Default'"
-        subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", ps_cmd], capture_output=True)
-    except Exception:
-        pass
+def send_toast(title: str, message: str, icon_path: str = None):
+    # Fallback paths
+    bundled_icon = os.path.join(os.path.dirname(__file__), "assets", "unicorn.jpg")
+    user_icon = r"U:\Pictures\Icons\unicorn.jpg"
 
-# Example Usage
-send_toast("🚀 Backup Iniciado", "Analizando archivos en L:\\ y U:\\...")
-send_toast("📊 Progreso: 50%", "Copiados 1,024 MB de 2,048 MB")
-send_toast("✅ Backup COMPLETADO (100%)", "2,100 archivos copiados exitosamente a D:\\")
+    selected_icon = None
+    for candidate in [icon_path, bundled_icon, user_icon]:
+        if candidate and os.path.exists(candidate):
+            selected_icon = candidate
+            break
+
+    if selected_icon:
+        ps_cmd = f"Import-Module BurntToast; New-BurntToastNotification -Text '{title}', '{message}' -AppLogo '{selected_icon}' -Sound 'Default'"
+    else:
+        ps_cmd = f"Import-Module BurntToast; New-BurntToastNotification -Text '{title}', '{message}' -Sound 'Default'"
+
+    subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", ps_cmd], capture_output=True)
+
+# Example Usage across lifecycle
+send_toast("🚀 Backup Started", "Analyzing directories in L:\\ and U:\\...")
+send_toast("📊 Progress: 50%", "Transferred 1,024 MB / 2,048 MB")
+send_toast("✅ Backup Completed (100%)", "2,100 files successfully synced to D:\\")
 ```
 
 ---
 
-## Global Agent Skill Setup
+## 🌐 Multi-Agent Global Configuration
 
-To install this skill globally for any AI agent on Windows:
-
-```bash
-npx skills add xyz-rainbow/xyz-windows-notify
-```
-
-Or manually copy `SKILL.md` to your global skill directory (e.g. `C:\Users\<user>\.gemini\config\skills\windows-notify\SKILL.md`).
+To make this skill accessible across all agents on the machine, ensure this folder is symlinked or copied into:
+- Antigravity / Gemini: `~/.gemini/config/skills/windows-notify/`
+- Claude Desktop / Code: `~/.claude/skills/windows-notify/`
+- Cursor / Trae / Global Agents: `~/.agents/skills/windows-notify/`

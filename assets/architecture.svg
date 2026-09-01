@@ -1,70 +1,186 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 540" width="1080" height="540">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0c0a14"/>
-      <stop offset="100%" stop-color="#151024"/>
+    <!-- Background Gradient -->
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090714"/>
+      <stop offset="50%" stop-color="#120c24"/>
+      <stop offset="100%" stop-color="#07050d"/>
     </linearGradient>
-    <linearGradient id="boxGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#8a2be2"/>
-      <stop offset="100%" stop-color="#4a00e0"/>
+
+    <!-- Node Gradients -->
+    <linearGradient id="gradAgent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7928ca"/>
+      <stop offset="100%" stop-color="#4c1d95"/>
     </linearGradient>
-    <linearGradient id="boxGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00c6ff"/>
-      <stop offset="100%" stop-color="#0072ff"/>
+
+    <linearGradient id="gradResolver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff007f"/>
+      <stop offset="100%" stop-color="#be185d"/>
     </linearGradient>
-    <linearGradient id="boxGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f80759"/>
-      <stop offset="100%" stop-color="#bc4e9c"/>
+
+    <linearGradient id="gradEngine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#0284c7"/>
     </linearGradient>
+
+    <linearGradient id="gradWindows" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff87"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <linearGradient id="borderCyanPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#ff007f"/>
+    </linearGradient>
+
+    <filter id="shadowBox" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
   </defs>
 
-  <rect width="1000" height="500" rx="16" fill="url(#bg)"/>
+  <!-- Background -->
+  <rect width="1080" height="540" rx="20" fill="url(#archBg)"/>
 
-  <!-- Diagram Title -->
-  <text x="500" y="50" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="24" fill="#ffffff" text-anchor="middle">System Architecture &amp; Notification Pipeline</text>
-  <text x="500" y="80" font-family="'Segoe UI', sans-serif" font-weight="400" font-size="14" fill="#9a95be" text-anchor="middle">From AI Agent Task execution to Windows 11 Action Center Toasts</text>
-
-  <!-- Node 1: AI Agent -->
-  <g transform="translate(60, 160)">
-    <rect width="240" height="180" rx="14" fill="#1b1531" stroke="url(#boxGrad1)" stroke-width="2"/>
-    <text x="120" y="40" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="18" fill="#ffffff" text-anchor="middle">AI Agent Layer</text>
-    <text x="120" y="70" font-family="'Segoe UI', sans-serif" font-size="13" fill="#b0abd4" text-anchor="middle">• Antigravity / Claude / GPT</text>
-    <text x="120" y="95" font-family="'Segoe UI', sans-serif" font-size="13" fill="#b0abd4" text-anchor="middle">• Monitors Background Tasks</text>
-    <text x="120" y="120" font-family="'Segoe UI', sans-serif" font-size="13" fill="#b0abd4" text-anchor="middle">• Evaluates Pct Milestones (10%)</text>
-    <rect x="30" y="135" width="180" height="30" rx="6" fill="#8a2be2" opacity="0.4"/>
-    <text x="120" y="155" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Triggers PowerShell Call</text>
+  <!-- Subtle Grid Pattern -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <path d="M0,90 H1080 M0,180 H1080 M0,270 H1080 M0,360 H1080 M0,450 H1080"/>
+    <path d="M120,0 V540 M240,0 V540 M360,0 V540 M480,0 V540 M600,0 V540 M720,0 V540 M840,0 V540 M960,0 V540"/>
   </g>
 
-  <!-- Connector Line 1 -->
-  <path d="M300,250 L370,250" stroke="#8a2be2" stroke-width="3" stroke-dasharray="6,6"/>
-  <polygon points="370,245 380,250 370,255" fill="#8a2be2"/>
-
-  <!-- Node 2: PowerShell BurntToast -->
-  <g transform="translate(380, 160)">
-    <rect width="240" height="180" rx="14" fill="#1b1531" stroke="url(#boxGrad2)" stroke-width="2"/>
-    <text x="120" y="40" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="18" fill="#ffffff" text-anchor="middle">BurntToast Engine</text>
-    <text x="120" y="70" font-family="'Segoe UI', sans-serif" font-size="13" fill="#b0abd4" text-anchor="middle">• Imports BurntToast Module</text>
-    <text x="120" y="95" font-family="'Segoe UI', sans-serif" font-size="13" fill="#b0abd4" text-anchor="middle">• Attaches Custom AppLogo</text>
-    <text x="120" y="120" font-family="'Segoe UI', sans-serif" font-size="13" fill="#b0abd4" text-anchor="middle">• (U:\Pictures\Icons\unicorn.jpg)</text>
-    <rect x="30" y="135" width="180" height="30" rx="6" fill="#0072ff" opacity="0.4"/>
-    <text x="120" y="155" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">WinRT Toast API Call</text>
+  <!-- Header Section -->
+  <g transform="translate(540, 50)" text-anchor="middle">
+    <rect x="-180" y="-20" width="360" height="28" rx="14" fill="#1b1233" stroke="#3b2b63" stroke-width="1"/>
+    <text x="0" y="-1" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="11.5" fill="#00f2fe" letter-spacing="1.5">END-TO-END PIPELINE ARCHITECTURE</text>
+    <text x="0" y="32" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="24" fill="#ffffff">System Flow &amp; Smart Icon Resolution</text>
   </g>
 
-  <!-- Connector Line 2 -->
-  <path d="M620,250 L690,250" stroke="#00c6ff" stroke-width="3" stroke-dasharray="6,6"/>
-  <polygon points="690,245 700,250 690,255" fill="#00c6ff"/>
+  <!-- Pipeline 4 Nodes -->
 
-  <!-- Node 3: Windows Action Center -->
-  <g transform="translate(700, 160)">
-    <rect width="240" height="180" rx="14" fill="#1b1531" stroke="url(#boxGrad3)" stroke-width="2"/>
-    <text x="120" y="40" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="18" fill="#ffffff" text-anchor="middle">Windows 11 Toasts</text>
-    <text x="120" y="70" font-family="'Segoe UI', sans-serif" font-size="13" fill="#b0abd4" text-anchor="middle">• Visual Toast Popups</text>
-    <text x="120" y="95" font-family="'Segoe UI', sans-serif" font-size="13" fill="#b0abd4" text-anchor="middle">• Custom Unicorn Icon</text>
-    <text x="120" y="120" font-family="'Segoe UI', sans-serif" font-size="13" fill="#b0abd4" text-anchor="middle">• Sound &amp; Action Center</text>
-    <rect x="30" y="135" width="180" height="30" rx="6" fill="#f80759" opacity="0.4"/>
-    <text x="120" y="155" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">User Visual Feedback</text>
+  <!-- Node 1: AI Agent Layer -->
+  <g transform="translate(40, 140)" filter="url(#shadowBox)">
+    <rect width="225" height="300" rx="14" fill="#150f28" stroke="url(#gradAgent)" stroke-width="2"/>
+    <rect x="0" y="0" width="225" height="42" rx="14" fill="url(#gradAgent)"/>
+    <rect x="0" y="28" width="225" height="14" fill="url(#gradAgent)"/>
+    <text x="112" y="26" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#ffffff" text-anchor="middle">1. AI Agent Orchestrator</text>
+
+    <!-- Content items -->
+    <g transform="translate(16, 62)">
+      <text x="0" y="16" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="12" fill="#c77dff">Agent Ecosystem:</text>
+      <text x="8" y="36" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Antigravity / Claude / GPT</text>
+      <text x="8" y="54" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Cursor / Trae / Grok / Pi</text>
+
+      <line x1="0" y1="72" x2="193" y2="72" stroke="#2c204d" stroke-width="1"/>
+
+      <text x="0" y="94" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="12" fill="#c77dff">Task Monitoring:</text>
+      <text x="8" y="114" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Background processes</text>
+      <text x="8" y="132" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• % Calculation (0-100%)</text>
+      <text x="8" y="150" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Error &amp; lifecycle detection</text>
+
+      <rect x="0" y="175" width="193" height="38" rx="7" fill="#251642" stroke="#4a2c7a" stroke-width="1"/>
+      <text x="96" y="198" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Emits Notification Event</text>
+    </g>
   </g>
 
-  <!-- Bottom Legend -->
-  <text x="500" y="420" font-family="'Segoe UI', sans-serif" font-size="13" fill="#757099" text-anchor="middle">Non-blocking background process • Real-time progress updates • Universal AI skill integration</text>
+  <!-- Flow Connector 1 -> 2 -->
+  <g transform="translate(265, 290)">
+    <line x1="0" y1="0" x2="35" y2="0" stroke="#7928ca" stroke-width="2.5" stroke-dasharray="5,4"/>
+    <polygon points="35,-4 42,0 35,4" fill="#7928ca"/>
+  </g>
+
+  <!-- Node 2: Smart Icon & Asset Resolver -->
+  <g transform="translate(307, 140)" filter="url(#shadowBox)">
+    <rect width="225" height="300" rx="14" fill="#150f28" stroke="url(#gradResolver)" stroke-width="2"/>
+    <rect x="0" y="0" width="225" height="42" rx="14" fill="url(#gradResolver)"/>
+    <rect x="0" y="28" width="225" height="14" fill="url(#gradResolver)"/>
+    <text x="112" y="26" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#ffffff" text-anchor="middle">2. Smart Icon Resolver</text>
+
+    <!-- Content items -->
+    <g transform="translate(16, 62)">
+      <text x="0" y="16" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="12" fill="#ff70a6">Resolution Hierarchy:</text>
+      
+      <rect x="0" y="26" width="193" height="24" rx="4" fill="#251128"/>
+      <text x="8" y="42" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#ffffff">① Explicit <tspan fill="#ff007f">-AppLogo</tspan></text>
+
+      <rect x="0" y="56" width="193" height="24" rx="4" fill="#251128"/>
+      <text x="8" y="72" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#ffffff">② Bundled: <tspan fill="#ff007f">assets/unicorn.jpg</tspan></text>
+
+      <rect x="0" y="86" width="193" height="24" rx="4" fill="#251128"/>
+      <text x="8" y="102" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#ffffff">③ AI Context / Generated Icon</text>
+
+      <rect x="0" y="116" width="193" height="24" rx="4" fill="#251128"/>
+      <text x="8" y="132" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#ffffff">④ User path: <tspan fill="#ff007f">U:\Pictures\Icons</tspan></text>
+
+      <rect x="0" y="175" width="193" height="38" rx="7" fill="#381028" stroke="#831843" stroke-width="1"/>
+      <text x="96" y="198" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Injects Validated Image URI</text>
+    </g>
+  </g>
+
+  <!-- Flow Connector 2 -> 3 -->
+  <g transform="translate(532, 290)">
+    <line x1="0" y1="0" x2="35" y2="0" stroke="#00f2fe" stroke-width="2.5" stroke-dasharray="5,4"/>
+    <polygon points="35,-4 42,0 35,4" fill="#00f2fe"/>
+  </g>
+
+  <!-- Node 3: PowerShell BurntToast Bridge -->
+  <g transform="translate(574, 140)" filter="url(#shadowBox)">
+    <rect width="225" height="300" rx="14" fill="#150f28" stroke="url(#gradEngine)" stroke-width="2"/>
+    <rect x="0" y="0" width="225" height="42" rx="14" fill="url(#gradEngine)"/>
+    <rect x="0" y="28" width="225" height="14" fill="url(#gradEngine)"/>
+    <text x="112" y="26" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#000000" text-anchor="middle">3. PowerShell Bridge</text>
+
+    <!-- Content items -->
+    <g transform="translate(16, 62)">
+      <text x="0" y="16" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="12" fill="#38bdf8">BurntToast Engine:</text>
+      <text x="8" y="36" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Non-blocking subshell execution</text>
+      <text x="8" y="54" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Native WinRT Toast XML builder</text>
+
+      <line x1="0" y1="72" x2="193" y2="72" stroke="#1e293b" stroke-width="1"/>
+
+      <text x="0" y="94" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="12" fill="#38bdf8">Toast Customization:</text>
+      <text x="8" y="114" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• <tspan fill="#00f2fe">-Sound</tspan> ('Default' / 'Reminder')</text>
+      <text x="8" y="132" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Header, Title, Body &amp; Progress</text>
+      <text x="8" y="150" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Action Buttons &amp; Dismissals</text>
+
+      <rect x="0" y="175" width="193" height="38" rx="7" fill="#082f49" stroke="#0284c7" stroke-width="1"/>
+      <text x="96" y="198" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Invokes Windows WinRT API</text>
+    </g>
+  </g>
+
+  <!-- Flow Connector 3 -> 4 -->
+  <g transform="translate(799, 290)">
+    <line x1="0" y1="0" x2="35" y2="0" stroke="#00ff87" stroke-width="2.5" stroke-dasharray="5,4"/>
+    <polygon points="35,-4 42,0 35,4" fill="#00ff87"/>
+  </g>
+
+  <!-- Node 4: Windows Action Center & UI -->
+  <g transform="translate(841, 140)" filter="url(#shadowBox)">
+    <rect width="200" height="300" rx="14" fill="#150f28" stroke="url(#gradWindows)" stroke-width="2"/>
+    <rect x="0" y="0" width="200" height="42" rx="14" fill="url(#gradWindows)"/>
+    <rect x="0" y="28" width="200" height="14" fill="url(#gradWindows)"/>
+    <text x="100" y="26" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#000000" text-anchor="middle">4. Windows 10 &amp; 11 UI</text>
+
+    <!-- Content items -->
+    <g transform="translate(14, 62)">
+      <text x="0" y="16" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="12" fill="#4ade80">Action Center &amp; Toasts:</text>
+      <text x="6" y="36" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Bottom-right visual toast</text>
+      <text x="6" y="54" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Custom unicorn/brand logo</text>
+      <text x="6" y="72" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Auditory chime feedback</text>
+
+      <line x1="0" y1="90" x2="172" y2="90" stroke="#14532d" stroke-width="1"/>
+
+      <text x="0" y="112" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="12" fill="#4ade80">User Interaction:</text>
+      <text x="6" y="132" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• Real-time notification bar</text>
+      <text x="6" y="150" font-family="'Segoe UI', sans-serif" font-size="11" fill="#a49ecc">• History in Notification Hub</text>
+
+      <rect x="0" y="175" width="172" height="38" rx="7" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+      <text x="86" y="198" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Instant User Awareness</text>
+    </g>
+  </g>
+
+  <!-- Footer Info -->
+  <g transform="translate(540, 490)" text-anchor="middle">
+    <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="12.5" fill="#756f96">
+      Windows 10 &amp; Windows 11 Compatible • Non-blocking asynchronous telemetry • Graceful asset fallback
+    </text>
+  </g>
 </svg>
