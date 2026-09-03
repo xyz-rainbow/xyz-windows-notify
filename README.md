@@ -6,11 +6,12 @@
 
 **Universal AI Agent Toast Notification Skill for Windows**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
-[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%20%7C%207%2B-blue.svg)](https://microsoft.com/powershell)
-[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011%20Compatible-0078d4.svg)](https://microsoft.com/windows)
-[![skills.sh](https://img.shields.io/badge/skills.sh-xyz--windows--notify-00f2fe.svg)](https://skills.sh)
-[![npx skills add](https://img.shields.io/badge/npx%20skills%20add-xyz--rainbow%2Fxyz--windows--notify-ff007f.svg)](#-one-command-installation-skills-cli)
+[![License: MIT](https://img.shields.io/badge/License-MIT-c8ff00?style=flat-square)](LICENSE)
+[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%20%7C%207%2B-00f0ff?style=flat-square&logo=powershell&logoColor=white)](https://microsoft.com/powershell)
+[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078d4?style=flat-square&logo=windows&logoColor=white)](https://microsoft.com/windows)
+[![skills.sh](https://img.shields.io/badge/skills.sh-xyz--windows--notify-00f2fe?style=flat-square)](https://skills.sh)
+[![npx skills add](https://img.shields.io/badge/npx%20skills%20add-xyz--rainbow%2Fxyz--windows--notify-ff007f?style=flat-square)](#-one-command-installation-skills-cli)
+[![BurntToast](https://img.shields.io/badge/BurntToast-native%20toasts-ff2bd6?style=flat-square)](https://github.com/Windos/BurntToast)
 
 *Supercharge AI agent workflows with native Windows toast notifications (fully compatible with Windows 10 & 11), percentage progress bars (%), bundled & AI-generated custom app logos (`-AppLogo`), non-blocking background telemetry, and sound alerts.*
 
@@ -210,7 +211,7 @@ To distribute this skill across different AI agent environments on Windows:
 
 ## 🏷️ Metadata & GitHub Tags
 
-`skills-sh` `npx-skills-add` `windows` `windows10` `windows11` `toast-notifications` `burnttoast` `powershell` `ai-agent-skill` `antigravity` `custom-applogo` `notifications` `unicorn-branding` `python`
+`skills-sh` `npx-skills-add` `windows` `windows10` `windows11` `toast-notifications` `burnttoast` `powershell` `ai-agent-skill` `agent-skills` `notifications`
 
 ---
 
