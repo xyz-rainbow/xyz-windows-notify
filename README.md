@@ -209,6 +209,23 @@ To distribute this skill across different AI agent environments on Windows:
 
 ---
 
+## 🔄 Autonomous Continuous Evolution & Auto-Update Protocol
+
+> [!IMPORTANT]
+> **Dynamic Self-Adaptation & Continuous Learning Protocol ("Protocolo de Auto-Evolución y Sincronización Continua")**:
+> All skills under the `xyz-*` framework are living, self-improving systems.
+> Whenever an AI agent or developer:
+> 1. Solves a new Windows version quirk (e.g. notification center focus assist, sound suppression, or icon caching behavior in Windows 11 23H2/24H2).
+> 2. Adds or generates new domain-specific icons or helper scripts.
+> 3. Discovers improved PowerShell BurntToast syntax, telemetry hooks, or cross-platform fallbacks.
+>
+> The AI agent **MUST automatically**:
+> 1. Update and enrich `SKILL.md` and `README.md`.
+> 2. Ensure all local paths and user artifacts remain strictly sanitized (no hardcoded personal usernames or private directories).
+> 3. Execute `git commit` and `git push` to synchronize changes to the upstream GitHub repository.
+
+---
+
 ## 🏷️ Metadata & GitHub Tags
 
 `skills-sh` `npx-skills-add` `windows` `windows10` `windows11` `toast-notifications` `burnttoast` `powershell` `ai-agent-skill` `agent-skills` `notifications`
