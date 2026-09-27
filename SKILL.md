@@ -146,3 +146,11 @@ To make this skill accessible across all agents on the machine, ensure this fold
 > 2. Ensure all local paths and user artifacts remain strictly sanitized (no hardcoded personal usernames or private directories).
 > 3. Execute `git commit` and `git push` to synchronize changes to the upstream GitHub repository.
 
+---
+
+## 🧩 Complementary Ecosystem Skills
+
+This skill operates synergistically across the `xyz-*` ecosystem:
+- 📁 **[xyz-folder](https://github.com/xyz-rainbow/xyz-folder)**: Highly recommended when saving, exporting, or archiving notification logs, custom icon libraries, branding assets, or media payloads into canonical, aesthetic folder structures with zero data loss.
+
+

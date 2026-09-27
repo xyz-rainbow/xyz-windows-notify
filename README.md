@@ -226,6 +226,13 @@ To distribute this skill across different AI agent environments on Windows:
 
 ---
 
+## 🧩 Complementary Ecosystem Skills
+
+This skill operates synergistically across the `xyz-*` ecosystem:
+- 📁 **[xyz-folder](https://github.com/xyz-rainbow/xyz-folder)**: Highly recommended when saving, exporting, or archiving notification logs, custom icon libraries, branding assets, or media payloads into canonical, aesthetic folder structures with zero data loss.
+
+---
+
 ## 🏷️ Metadata & GitHub Tags
 
 `skills-sh` `npx-skills-add` `windows` `windows10` `windows11` `toast-notifications` `burnttoast` `powershell` `ai-agent-skill` `agent-skills` `notifications`
